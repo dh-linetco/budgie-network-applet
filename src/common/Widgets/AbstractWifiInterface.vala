@@ -130,6 +130,10 @@ public abstract class Network.AbstractWifiInterface : Network.WidgetNMInterface 
 
 	void access_point_added_cb (Object ap_) {
 		NM.AccessPoint ap = (NM.AccessPoint)ap_;
+		if (ap.ssid == null) {
+			update ();
+			return;
+		}
 		WifiMenuItem? previous_wifi_item = null;
 
 		if (ap.ssid == null) {
